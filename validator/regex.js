@@ -1,11 +1,4 @@
 /**
- * @desc VALIDATES INPUT FIELDS
- * @param {*} value VALUE PASSED
- * @returns {Boolean} BOOLEAN
- */
-const isEmpty = value => (typeof value === 'string' ? value.trim() === '' : value);
-
-/**
  * @function isEmail
  * @param {*} value
  * @return {*} boolean

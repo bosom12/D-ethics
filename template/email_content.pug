@@ -1,0 +1,9 @@
+extends email-layout
+
+block content
+  h2 Hi #{fullName},
+  p You have requested a password reset. Please click the following button to continue with resetting your password. Please note this link is only valid until the next hour.
+  +button(resetURL, 'Reset Password →')
+  p Alternatively, You can also copy and paste this link in your browser and hit enter on your keyboard. #{resetURL}
+  br
+  p If you didn't request this email, please ignore it.

@@ -2,9 +2,7 @@ import 'dotenv/config';
 import bodyparser from 'body-parser';
 import cors from 'cors';
 import jsend from 'jsend';
-import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from './swagger.json';
-import Routes from './routes/index';
+import sendMail from './emailSender';
 
 /**
  * @class Setup
@@ -32,17 +30,6 @@ export class Setup {
   /**
    * @returns {*} void
    */
-  useSwaggerDocumentation() {
-    this.app.use(
-      '/api-docs',
-      swaggerUi.serve,
-      swaggerUi.setup(swaggerDocument)
-    );
-  }
-
-  /**
-   * @returns {*} void
-   */
   useCorsSecurityconfig() {
     const whitelist = ['http://.compute.amazonaws.com'];
     const corsOptions = {
@@ -54,9 +41,6 @@ export class Setup {
         }
       }
     };
-    if (envManager.getEnvValue('NODE_ENV') === 'development') {
-      return this.app.use(cors());
-    }
     this.app.use(cors(corsOptions));
   }
 
@@ -65,7 +49,7 @@ export class Setup {
    * @returns {*} void
    */
   setGlobalRoutesPrefix(prefix) {
-    this.app.use(prefix, Routes.router);
+    this.app.use(prefix, sendMail);
   }
 
   /**

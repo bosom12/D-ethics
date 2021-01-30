@@ -14,11 +14,9 @@ class App extends Setup {
 
     this.useCorsSecurityconfig();
 
-    this.setGlobalRoutesPrefix('/api/v1');
+    this.setGlobalRoutesPrefix('/api');
 
     this.setTestApplicationRoutes();
-
-    this.useSwaggerDocumentation();
 
     this.catchUnknownRoutes();
   }
